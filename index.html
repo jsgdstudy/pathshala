@@ -78,7 +78,7 @@
     /* ── HERO BANNER — big bold DJP style ───────────────────── */
     .hero {
       background: linear-gradient(135deg, #F5EEC8 0%, #FEF9E7 55%, #FFFDF0 100%);
-      padding: 64px 40px 56px;
+      padding: 24px 40px 24px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -104,7 +104,7 @@
       background: radial-gradient(ellipse at 30% 60%, rgba(244,131,31,0.15) 0%, transparent 65%);
       pointer-events: none;
     }
-    .hero-content { position: relative; z-index: 1; max-width: 700px; }
+    .hero-content { position: relative; z-index: 1; max-width: 860px; }
     .hero-eyebrow {
       display: inline-block;
       background: rgba(232, 114, 42, 0.12);
@@ -121,7 +121,7 @@
     .hero-content h2 {
       font-family: 'Poppins', sans-serif;
       font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 800;
+      font-weight: 500;
       color: #2C1A0E;
       line-height: 1.15;
       margin-bottom: 16px;
@@ -129,8 +129,7 @@
     .hero-content h2 span { color: var(--saffron); }
     .hero-content p {
       color: rgba(44, 26, 14, 0.68);
-      font-size: 1.05rem;
-      max-width: 520px;
+      font-size: 1.0rem;
       margin: 0 auto 28px;
       font-weight: 400;
     }
@@ -144,7 +143,7 @@
     .hero-stat { text-align: center; }
     .hero-stat .num {
       font-size: 2rem;
-      font-weight: 800;
+      font-weight: 100;
       color: var(--saffron);
       line-height: 1;
       display: block;
@@ -326,7 +325,7 @@
     .content-wrap {
       max-width: 900px;
       margin: 0 auto;
-      padding: 52px 24px 72px;
+      padding: 28px 24px 56px;
     }
 
     /* ── SECTION LABELS ──────────────────────────────────────── */
@@ -462,7 +461,7 @@
       margin-bottom: 10px;
       line-height: 1.2;
     }
-    .inline-calendar { margin: 40px 0 32px; }
+    .inline-calendar { margin: 16px 0 24px; }
 
     @media (max-width: 640px) {
       .about-menu-grid { grid-template-columns: 1fr; }
@@ -491,7 +490,7 @@
 
     /* ── REGISTRATION ────────────────────────────────────────── */
     .reg-hero {
-      background: linear-gradient(135deg, #2A1008, #3D1A0E);
+      background: linear-gradient(135deg, #804c3c, #3D1A0E);
       border-radius: 16px;
       padding: 52px 44px;
       text-align: center;
@@ -740,10 +739,8 @@
   <!-- HERO BANNER -->
   <section class="hero">
     <div class="hero-content">
-      <div class="hero-eyebrow">✦ &nbsp; Est. 1975 &nbsp; ✦ &nbsp; Greater Detroit, Michigan &nbsp; ✦</div>
-      <h2>Inspiring <span>Young Jains</span><br/>to Learn &amp; Grow</h2>
-      <p>A community Pathshala rooted in Jain values — teaching the next generation through faith, education, and cultural connection.</p>
-
+      <h2>Welcome to <span>JSGD</span></h2>
+      <p>Since 1975, a thriving spiritual and cultural center for the Jain community in Detroit and nearby areas. Established by dedicated members from Michigan and Canada, the society has grown to support over 600 families across multiple counties, formalizing its Articles of Organization in 1981.</p>
     </div>
   </section>
 
@@ -807,13 +804,7 @@
     <!-- DEFAULT ABOUT VIEW -->
     <div id="page-about" class="sub-page active">
       <div class="content-wrap">
-        <span class="section-label">Who We Are</span>
-        <h2 class="section-title">About Our Pathshala</h2>
-        <div class="section-divider"></div>
-        <div class="history-block">
-          <p>Since <strong>1975</strong>, the Jain Society of Greater Detroit has been a thriving spiritual and cultural center, supporting the Jain community in Detroit and nearby areas. Established by dedicated members from Michigan and Canada, the society has grown to support over <strong>600 families</strong> across multiple counties. The Society formalized its Articles of Organization in <strong>1981</strong>.</p>
-        </div>
-        <!-- Calendar moved here, above contact info -->
+        <!-- Calendar -->
         <div class="inline-calendar">
           <span class="section-label">Schedule</span>
           <h3 class="sub-section-title">Pathshala Calendar</h3>
@@ -933,7 +924,6 @@
   <div id="tab-registration" class="tab-panel" role="tabpanel">
     <div class="content-wrap">
       <span class="section-label">Join Us</span>
-      <h2 class="section-title">Registration</h2>
       <div class="section-divider"></div>
 
       <div class="reg-hero">
