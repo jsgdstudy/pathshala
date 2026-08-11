@@ -583,6 +583,16 @@
       color: var(--white);
     }
     .group-card h4 { font-size: 0.88rem; font-weight: 600; color: var(--heading); }
+    .group-grade { font-size: 0.74rem; color: var(--muted); margin-top: 3px; }
+    .group-card { cursor: pointer; }
+    .group-card.active {
+      border-color: var(--saffron);
+      box-shadow: 0 6px 20px rgba(232,114,42,0.18);
+      background: var(--saffron-light);
+    }
+    .group-card.active .group-num {
+      background: linear-gradient(135deg, var(--saffron-deep), var(--saffron));
+    }
 
     .curriculum-embed-wrap {
       border: 2px solid var(--border);
@@ -964,44 +974,62 @@
       <span class="section-label">Learning Path</span>
       <h2 class="section-title">Curriculum</h2>
       <div class="section-divider"></div>
+      <p style="margin-bottom:24px; color:var(--muted); font-size:0.92rem;">Select a group to view their curriculum. Groups 1 &amp; 2 share the same syllabus.</p>
 
-      <p style="margin-bottom:24px; color:var(--muted); font-size:0.92rem;">Our Pathshala is organized into 8 groups (G1–G8). Browse the full curriculum document below.</p>
-
-      <!-- G1–G8 cards -->
+      <!-- G1–G8 clickable cards -->
+      <!--
+        ✏️ HOW TO ADD YOUR GOOGLE SHEET LINKS:
+        1. Open your Google Sheet → click the tab for that group
+        2. File → Share → Publish to web → select that tab → Web page → Publish
+        3. Copy the link (looks like: https://docs.google.com/spreadsheets/d/XXXX/pubhtml?gid=YYYY&single=true)
+        4. Replace the matching SHEET_URL_GX below with that link
+      -->
       <div class="curr-groups">
-        <div class="group-card"><div class="group-num">G1</div><h4>Group 1</h4></div>
-        <div class="group-card"><div class="group-num">G2</div><h4>Group 2</h4></div>
-        <div class="group-card"><div class="group-num">G3</div><h4>Group 3</h4></div>
-        <div class="group-card"><div class="group-num">G4</div><h4>Group 4</h4></div>
-        <div class="group-card"><div class="group-num">G5</div><h4>Group 5</h4></div>
-        <div class="group-card"><div class="group-num">G6</div><h4>Group 6</h4></div>
-        <div class="group-card"><div class="group-num">G7</div><h4>Group 7</h4></div>
-        <div class="group-card"><div class="group-num">G8</div><h4>Group 8</h4></div>
+        <div class="group-card active" onclick="showGroup('g1', 'G1 &amp; G2', 'Grade Pre-K to K', 'https://docs.google.com/spreadsheets/d/1jG7tcjX-48S8BZ4bn1JPLXNk1H5OxlBh/edit?gid=1909772971#gid=1909772971')">
+          <div class="group-num">G1</div><h4>Group 1 &amp; 2</h4>
+          <p class="group-grade">Pre-K to K</p>
+        </div>
+        <div class="group-card" onclick="showGroup('g3', 'G3', 'Grade 1 &amp; 2', 'https://docs.google.com/spreadsheets/d/1jG7tcjX-48S8BZ4bn1JPLXNk1H5OxlBh/edit?gid=506882214#gid=506882214')">
+          <div class="group-num">G3</div><h4>Group 3</h4>
+          <p class="group-grade">Grade 1 &amp; 2</p>
+        </div>
+        <div class="group-card" onclick="showGroup('g4', 'G4', 'Grade 3 &amp; 4', 'https://docs.google.com/spreadsheets/d/1jG7tcjX-48S8BZ4bn1JPLXNk1H5OxlBh/edit?gid=1948812629#gid=1948812629')">
+          <div class="group-num">G4</div><h4>Group 4</h4>
+          <p class="group-grade">Grade 3 &amp; 4</p>
+        </div>
+        <div class="group-card" onclick="showGroup('g5', 'G5', 'Grade 5 &amp; 6', 'https://docs.google.com/spreadsheets/d/1jG7tcjX-48S8BZ4bn1JPLXNk1H5OxlBh/edit?gid=1662165754#gid=1662165754')">
+          <div class="group-num">G5</div><h4>Group 5</h4>
+          <p class="group-grade">Grade 5 &amp; 6</p>
+        </div>
+        <div class="group-card" onclick="showGroup('g6', 'G6', 'Grade 7 &amp; 8', 'https://docs.google.com/spreadsheets/d/1jG7tcjX-48S8BZ4bn1JPLXNk1H5OxlBh/edit?gid=345931937#gid=345931937')">
+          <div class="group-num">G6</div><h4>Group 6</h4>
+          <p class="group-grade">Grade 7 &amp; 8</p>
+        </div>
+        <div class="group-card" onclick="showGroup('g7', 'G7', 'Grade 9 &amp; 10', 'https://docs.google.com/spreadsheets/d/1jG7tcjX-48S8BZ4bn1JPLXNk1H5OxlBh/edit?gid=2081161073#gid=2081161073')">
+          <div class="group-num">G7</div><h4>Group 7</h4>
+          <p class="group-grade">Grade 9 &amp; 10</p>
+        </div>
+        <div class="group-card" onclick="showGroup('g8', 'G8', 'Grade 11 &amp; 12', 'https://docs.google.com/spreadsheets/d/1jG7tcjX-48S8BZ4bn1JPLXNk1H5OxlBh/edit?gid=106331982#gid=106331982')">
+          <div class="group-num">G8</div><h4>Group 8</h4>
+          <p class="group-grade">Grade 11 &amp; 12</p>
+        </div>
       </div>
 
-      <!-- Google Drive embed -->
-      <div class="curriculum-embed-wrap">
+      <!-- Embed area — updates when a group is clicked -->
+      <div class="curriculum-embed-wrap" style="margin-top:28px;">
         <div class="embed-toolbar">
           <span>📄</span>
-          <strong>Curriculum Guide 2025–26</strong>
-          <!-- ✏️ UPDATE: Replace # with your Google Doc view link -->
-          <a href="#" target="_blank" rel="noopener">Open in Google Drive ↗</a>
+          <strong id="curr-embed-title">Select a group above</strong>
+          <a id="curr-open-link" href="#" target="_blank" rel="noopener" style="display:none">Open in Google Sheets ↗</a>
         </div>
-        <!--
-          ── HOW TO EMBED YOUR GOOGLE DOC ─────────────────────────────
-          1. Open your Google Doc / Slides in Drive
-          2. File → Share → "Anyone with the link can view"
-          3. File → Publish to web → Embed → Copy the <iframe> code
-          4. DELETE the .embed-placeholder div below
-          5. PASTE your <iframe> here, add style="width:100%;min-height:500px;border:none;"
-          ─────────────────────────────────────────────────────────────
-        -->
-        <div class="embed-placeholder">
-          <div class="icon-big">📋</div>
-          <p>Your Google Doc curriculum will appear here. Publish it to the web and paste the embed code above this note.</p>
-          <p style="margin-top:4px;">See the HTML comment above for step-by-step instructions.</p>
+        <div id="curr-embed-body">
+          <div class="embed-placeholder">
+            <div class="icon-big">👆</div>
+            <p>Click any group card above to view their curriculum.</p>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 
@@ -1065,6 +1093,27 @@
       const aboutBtn = document.querySelector('.tab-btn[data-tab="about"]');
       if (aboutBtn) aboutBtn.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ── Curriculum group switcher ─────────────────────────────
+    function showGroup(id, label, grade, url) {
+      document.querySelectorAll('.group-card').forEach(c => c.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+      document.getElementById('curr-embed-title').textContent = label + ' — ' + grade;
+      const openLink = document.getElementById('curr-open-link');
+      const body = document.getElementById('curr-embed-body');
+      if (!url || url.startsWith('SHEET_URL')) {
+        body.innerHTML = `<div class="embed-placeholder">
+          <div class="icon-big">📋</div>
+          <p>Paste the Google Sheets publish link for <strong>${label}</strong> in the HTML to activate this embed.</p>
+          <p style="margin-top:6px;font-size:0.8rem;">See the HTML comment above the group cards for step-by-step instructions.</p>
+        </div>`;
+        openLink.style.display = 'none';
+      } else {
+        body.innerHTML = `<iframe src="${url}" style="width:100%;min-height:540px;border:none;" loading="lazy"></iframe>`;
+        openLink.href = url;
+        openLink.style.display = 'inline';
+      }
     }
 
     // ── Home ──────────────────────────────────────────────────
