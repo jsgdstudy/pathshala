@@ -288,7 +288,8 @@
       transition: transform 0.2s;
       display: inline-block;
     }
-    .nav-dropdown:hover .tab-btn .caret { transform: rotate(180deg); }
+    .nav-dropdown:hover .tab-btn .caret { transform: rotate(0deg); }
+    .nav-dropdown.open .tab-btn .caret { transform: rotate(180deg); }
 
     /* Dropdown menu */
     .dropdown-menu {
@@ -305,7 +306,7 @@
       z-index: 200;
       overflow: hidden;
     }
-    .nav-dropdown:hover .dropdown-menu { display: block; }
+    .nav-dropdown.open .dropdown-menu { display: block; }
     .dropdown-item {
       display: block;
       width: 100%;
@@ -800,15 +801,15 @@
       <a class="nav-home active" href="#" onclick="showHome();return false;" title="Home" aria-label="Home">🏠</a>
 
       <!-- About Us dropdown -->
-      <div class="nav-dropdown">
-        <button class="tab-btn" data-tab="about" onclick="switchTab('about')" aria-haspopup="true">
+      <div class="nav-dropdown" id="about-dropdown">
+        <button class="tab-btn" data-tab="about" onclick="toggleDropdown(event)" aria-haspopup="true">
           About Us <span class="caret">▼</span>
         </button>
         <div class="dropdown-menu" role="menu">
-          <button class="dropdown-item" onclick="showPage('mission')">Mission &amp; Vision</button>
-          <button class="dropdown-item" onclick="showPage('values')">Our Values</button>
-          <button class="dropdown-item" onclick="showPage('classes')">Classes</button>
-          <button class="dropdown-item" onclick="showPage('community')">Community</button>
+          <button class="dropdown-item" onclick="closeDropdown(); showPage('mission')">Mission &amp; Vision</button>
+          <button class="dropdown-item" onclick="closeDropdown(); showPage('values')">Our Values</button>
+          <button class="dropdown-item" onclick="closeDropdown(); showPage('classes')">Classes</button>
+          <button class="dropdown-item" onclick="closeDropdown(); showPage('community')">Community</button>
         </div>
       </div>
 
@@ -1072,6 +1073,18 @@
   </footer>
 
   <script>
+    // ── Dropdown toggle ───────────────────────────────────────
+    function toggleDropdown(e) {
+      e.stopPropagation();
+      const dd = document.getElementById('about-dropdown');
+      dd.classList.toggle('open');
+    }
+    function closeDropdown() {
+      document.getElementById('about-dropdown').classList.remove('open');
+    }
+    // Close when clicking anywhere outside
+    document.addEventListener('click', function() { closeDropdown(); });
+
     // ── Tab switcher ──────────────────────────────────────────
     function switchTab(name) {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
